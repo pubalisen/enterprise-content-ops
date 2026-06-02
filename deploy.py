@@ -104,6 +104,12 @@ def main():
                 " workflows: SequentialAgent pipeline, ParallelAgent fan-out,"
                 " LoopAgent refinement, and 4 skill patterns."
             ),
+            requirements=[
+                "google-adk[eval]>=2.1.0",
+                "google-cloud-aiplatform>=1.154.0",
+                "cloudpickle>=3.1.0",
+                "pydantic>=2.12.0",
+            ],
         )
 
         print(f"\n{'━' * 55}")
