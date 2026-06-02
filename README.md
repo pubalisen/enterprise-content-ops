@@ -21,37 +21,55 @@ An enterprise-grade content operations system built with **Google ADK 2.0** that
 
 ## Architecture
 
-```
-┌──────────────────────────────────────────────────────────────────┐
-│                    Root Orchestrator (LlmAgent)                  │
-│   Routes user requests to the appropriate workflow agent         │
-├────────────┬────────────────┬───────────────┬───────────────────┤
-│            │                │               │                   │
-│  Sequential│   Parallel     │    Loop       │   Skills          │
-│  Pipeline  │   Generator    │    Refiner    │   Toolset         │
-│            │                │               │                   │
-│  Research  │  Blog Writer   │  Writer       │  seo-checklist    │
-│    ↓       │  Social Writer │    ↓          │  blog-writer      │
-│  Drafter   │  Email Writer  │  Critic       │  research-writer  │
-│    ↓       │  Exec Summary  │    ↓ (loop)   │  skill-creator    │
-│  Reviewer  │                │  Passes?      │                   │
-└────────────┴────────────────┴───────────────┴───────────────────┘
-```
+<p align="center">
+  <img src="assets/architecture.png" alt="ADK 2.0 Multi-Agent Architecture" width="700">
+</p>
 
 ## Quick Start
 
 ```bash
 # Clone and setup
-cd agents/enterprise-content-ops
+git clone https://github.com/pubalisen/enterprise-content-ops.git
+cd enterprise-content-ops
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e .
+```
 
-# Configure API key
-cp .env.example app/.env
-# Edit app/.env with your GOOGLE_API_KEY
+### Configure Credentials (pick one)
 
-# Run with ADK Web UI
+**Option A — Google AI Studio (fastest, no GCP needed):**
+```bash
+echo 'GOOGLE_API_KEY="your-key"' > app/.env
+# Get a key at https://aistudio.google.com/apikey
+```
+
+**Option B — Vertex AI with gcloud:**
+```bash
+cat > app/.env << 'EOF'
+GOOGLE_GENAI_USE_VERTEXAI=TRUE
+GOOGLE_CLOUD_PROJECT=your-project-id
+GOOGLE_CLOUD_LOCATION=us-central1
+EOF
+
+gcloud auth application-default login
+gcloud services enable aiplatform.googleapis.com
+```
+
+**Option C — Vertex AI with Service Account:**
+```bash
+cat > app/.env << 'EOF'
+GOOGLE_GENAI_USE_VERTEXAI=TRUE
+GOOGLE_CLOUD_PROJECT=your-project-id
+GOOGLE_CLOUD_LOCATION=us-central1
+GOOGLE_APPLICATION_CREDENTIALS=/path/to/your-service-account.json
+EOF
+```
+
+### Run
+
+```bash
 adk web
+# Opens at http://127.0.0.1:8000
 ```
 
 ## Try It
@@ -73,7 +91,7 @@ adk web
 python deploy.py --dry-run
 
 # Deploy to your GCP project
-python deploy.py --project robust-habitat-467517-r6 --region us-central1
+python deploy.py --project your-project-id --region us-central1
 
 # Deploy with custom name
 python deploy.py --display-name "Content Ops v2"
@@ -83,7 +101,7 @@ python deploy.py --display-name "Content Ops v2"
 ```bash
 # Authenticate with GCP
 gcloud auth application-default login
-gcloud config set project robust-habitat-467517-r6
+gcloud config set project your-project-id
 
 # Enable required APIs
 gcloud services enable aiplatform.googleapis.com

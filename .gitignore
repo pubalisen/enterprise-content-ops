@@ -29,3 +29,5 @@ app/.env
 # OS
 .DS_Store
 Thumbs.db
+mygenerativeai-sa.json
+*.json
