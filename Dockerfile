@@ -9,9 +9,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy agent source
 COPY app/ ./app/
 
-# Expose port
+# Expose port — Cloud Run uses PORT env var
 ENV PORT=8080
 EXPOSE 8080
 
-# Run the ADK server
-CMD ["adk", "api_server", "--port", "8080", "--host", "0.0.0.0", "app"]
+# Run the ADK Web UI (not api_server) so we get the full dev UI
+CMD ["adk", "web", "--port", "8080", "--host", "0.0.0.0", "app"]
