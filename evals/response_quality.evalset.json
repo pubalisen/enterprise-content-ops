@@ -1,0 +1,169 @@
+{
+  "eval_set_id": "response_quality",
+  "name": "Response Quality Evaluation",
+  "eval_cases": [
+    {
+      "eval_id": "routing_lists_workflows",
+      "conversation": [
+        {
+          "invocation_id": "",
+          "user_content": {
+            "parts": [
+              {
+                "text": "What workflows do you have available?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "I have the following workflows: content pipeline for sequential content production, multi-format generator for parallel multi-channel content, and quality loop for iterative refinement."
+              }
+            ],
+            "role": "model"
+          },
+          "creation_timestamp": 0.0
+        }
+      ],
+      "creation_timestamp": 0.0,
+      "final_session_state": {}
+    },
+    {
+      "eval_id": "sequential_article_quality",
+      "conversation": [
+        {
+          "invocation_id": "",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Write a short article about AI in healthcare diagnostics."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "AI is transforming healthcare diagnostics through improved medical imaging analysis, predictive analytics, and early disease detection."
+              }
+            ],
+            "role": "model"
+          },
+          "creation_timestamp": 0.0
+        }
+      ],
+      "creation_timestamp": 0.0,
+      "final_session_state": {}
+    },
+    {
+      "eval_id": "parallel_multi_format",
+      "conversation": [
+        {
+          "invocation_id": "",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Take this topic and create versions for all channels: The Rise of Remote Work"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Blog post about remote work trends, social media posts, email newsletter, and executive summary covering the rise of remote work."
+              }
+            ],
+            "role": "model"
+          },
+          "creation_timestamp": 0.0
+        }
+      ],
+      "creation_timestamp": 0.0,
+      "final_session_state": {}
+    },
+    {
+      "eval_id": "loop_quality_refinement",
+      "conversation": [
+        {
+          "invocation_id": "",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Write a polished thought leadership piece about developer experience."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Developer experience is crucial for engineering productivity and talent retention. Companies investing in DevEx see improved code quality and faster delivery."
+              }
+            ],
+            "role": "model"
+          },
+          "creation_timestamp": 0.0
+        }
+      ],
+      "creation_timestamp": 0.0,
+      "final_session_state": {}
+    },
+    {
+      "eval_id": "seo_review",
+      "conversation": [
+        {
+          "invocation_id": "",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Review this for SEO: Getting Started with Kubernetes."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "SEO review checklist covering title tag, meta description, heading structure, keyword density, internal links, and image alt text."
+              }
+            ],
+            "role": "model"
+          },
+          "creation_timestamp": 0.0
+        }
+      ],
+      "creation_timestamp": 0.0,
+      "final_session_state": {}
+    },
+    {
+      "eval_id": "skill_creator_generates_skill",
+      "conversation": [
+        {
+          "invocation_id": "",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Create a new skill for reviewing Python code for security vulnerabilities."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "SKILL.md for python security review including OWASP top 10, input validation, SQL injection prevention, and secure coding practices."
+              }
+            ],
+            "role": "model"
+          },
+          "creation_timestamp": 0.0
+        }
+      ],
+      "creation_timestamp": 0.0,
+      "final_session_state": {}
+    }
+  ],
+  "creation_timestamp": 0.0
+}
