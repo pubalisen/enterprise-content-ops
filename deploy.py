@@ -49,15 +49,14 @@ def main():
     # ── Step 2: Check authentication ─────────────────────────
     print("\n🔐 Checking authentication...")
 
-    # Check if Application Default Credentials exist
-    adc_path = os.path.expanduser("~/.config/gcloud/application_default_credentials.json")
-    sa_path = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
-
-    if sa_path and os.path.exists(sa_path):
-        print(f"   ✅ Using service account: {os.path.basename(sa_path)}")
-    elif os.path.exists(adc_path):
-        print(f"   ✅ Using Application Default Credentials")
-    else:
+    try:
+        import google.auth
+        credentials, project = google.auth.default()
+        cred_type = type(credentials).__name__
+        print(f"   ✅ Credentials found: {cred_type}")
+        if project:
+            print(f"   ✅ Default project: {project}")
+    except google.auth.exceptions.DefaultCredentialsError:
         print("   ❌ No credentials found!")
         print("   Run: gcloud auth application-default login")
         print("   Or set: GOOGLE_APPLICATION_CREDENTIALS=/path/to/key.json")
