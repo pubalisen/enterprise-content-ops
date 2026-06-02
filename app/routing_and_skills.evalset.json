@@ -1,0 +1,211 @@
+{
+  "eval_set_id": "routing_and_skills",
+  "name": "Routing and Skills Evaluation",
+  "eval_cases": [
+    {
+      "eval_id": "routing_lists_workflows",
+      "conversation": [
+        {
+          "invocation_id": "",
+          "user_content": {
+            "parts": [
+              {
+                "text": "What workflows do you have available? List them all."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "content_pipeline, multi_format_generator, quality_loop"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 0.0
+        }
+      ],
+      "creation_timestamp": 0.0,
+      "final_session_state": {}
+    },
+    {
+      "eval_id": "routing_simple_question",
+      "conversation": [
+        {
+          "invocation_id": "",
+          "user_content": {
+            "parts": [
+              {
+                "text": "How many skills do you have?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "4 skills: seo-checklist, blog-writer, content-research-writer, skill-creator"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 0.0
+        }
+      ],
+      "creation_timestamp": 0.0,
+      "final_session_state": {}
+    },
+    {
+      "eval_id": "skill_seo_loads",
+      "conversation": [
+        {
+          "invocation_id": "",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Review this for SEO: Getting Started with Kubernetes. Kubernetes is a container orchestration platform."
+              }
+            ],
+            "role": "user"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "args": {},
+                "name": "list_skills"
+              },
+              {
+                "args": {
+                  "skill_name": "seo-checklist"
+                },
+                "name": "load_skill"
+              }
+            ],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 0.0
+        }
+      ],
+      "creation_timestamp": 0.0,
+      "final_session_state": {}
+    },
+    {
+      "eval_id": "skill_blog_writer_loads",
+      "conversation": [
+        {
+          "invocation_id": "",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Use your blog writing skill to help me structure a post about cloud migration."
+              }
+            ],
+            "role": "user"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "args": {},
+                "name": "list_skills"
+              },
+              {
+                "args": {
+                  "skill_name": "blog-writer"
+                },
+                "name": "load_skill"
+              }
+            ],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 0.0
+        }
+      ],
+      "creation_timestamp": 0.0,
+      "final_session_state": {}
+    },
+    {
+      "eval_id": "skill_research_writer_loads",
+      "conversation": [
+        {
+          "invocation_id": "",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Use your research skill to investigate quantum computing trends."
+              }
+            ],
+            "role": "user"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "args": {},
+                "name": "list_skills"
+              },
+              {
+                "args": {
+                  "skill_name": "content-research-writer"
+                },
+                "name": "load_skill"
+              }
+            ],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 0.0
+        }
+      ],
+      "creation_timestamp": 0.0,
+      "final_session_state": {}
+    },
+    {
+      "eval_id": "skill_creator_meta",
+      "conversation": [
+        {
+          "invocation_id": "",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Create a new skill for reviewing Python security vulnerabilities. Generate the SKILL.md."
+              }
+            ],
+            "role": "user"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "args": {},
+                "name": "list_skills"
+              },
+              {
+                "args": {
+                  "skill_name": "skill-creator"
+                },
+                "name": "load_skill"
+              }
+            ],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 0.0
+        }
+      ],
+      "creation_timestamp": 0.0,
+      "final_session_state": {}
+    }
+  ],
+  "creation_timestamp": 0.0
+}
