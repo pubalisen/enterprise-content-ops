@@ -2,17 +2,15 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-# Install curl for health checks and eval loading
-RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
-
 # Install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy agent source, eval sets, and startup script
+# Copy agent source and eval sets
 COPY app/ ./app/
-COPY entrypoint.sh .
-RUN chmod +x entrypoint.sh
+
+# Verify eval files are present at build time
+RUN ls -la ./app/*.evalset.json && echo "✅ Eval files present"
 
 # Ensure .adk directories exist and are writable
 RUN mkdir -p ./app/.adk/eval_sets ./app/.adk/eval_history && chmod -R 777 ./app/.adk
@@ -20,5 +18,5 @@ RUN mkdir -p ./app/.adk/eval_sets ./app/.adk/eval_history && chmod -R 777 ./app/
 # Cloud Run injects PORT env var (default 8080)
 EXPOSE 8080
 
-# Use entrypoint script that starts ADK web + loads evals
-CMD ["./entrypoint.sh"]
+# Start ADK web directly — eval sets are already at ./app/*.evalset.json
+CMD ["sh", "-c", "adk web --port ${PORT:-8080} --host 0.0.0.0"]
