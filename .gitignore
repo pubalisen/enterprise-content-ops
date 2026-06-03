@@ -30,4 +30,3 @@ app/.env
 .DS_Store
 Thumbs.db
 mygenerativeai-sa.json
-*.json
