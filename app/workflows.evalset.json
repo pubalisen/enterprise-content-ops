@@ -1,0 +1,91 @@
+{
+  "eval_set_id": "workflows",
+  "name": "Workflow Pattern Evaluations",
+  "eval_cases": [
+    {
+      "eval_id": "sequential_pipeline_triggers",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [
+              {
+                "text": "Write an article about how AI is transforming supply chain management. Use the full content pipeline."
+              }
+            ]
+          },
+          "intermediate_data": {
+            "invocation_order": [
+              "research_agent",
+              "draft_agent",
+              "review_agent"
+            ]
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "supply chain"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "eval_id": "parallel_generator_triggers",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [
+              {
+                "text": "I have content about 'The Rise of Edge Computing'. Generate versions for all channels: blog, social media, email, and executive summary."
+              }
+            ]
+          },
+          "intermediate_data": {
+            "invocation_order": [
+              "blog_format_agent",
+              "social_format_agent",
+              "email_format_agent",
+              "exec_summary_agent"
+            ]
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "edge computing"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "eval_id": "loop_refiner_triggers",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [
+              {
+                "text": "Write a polished thought leadership piece about developer experience. Keep refining until excellent."
+              }
+            ]
+          },
+          "intermediate_data": {
+            "invocation_order": [
+              "iterative_writer",
+              "quality_critic"
+            ]
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "developer experience"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "creation_timestamp": 1780447000.0
+}
