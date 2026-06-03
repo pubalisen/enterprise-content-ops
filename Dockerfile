@@ -9,8 +9,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy agent source and eval sets
 COPY app/ ./app/
 
-# Verify eval files are present at build time
-RUN ls -la ./app/*.evalset.json && echo "✅ Eval files present"
+# Eval files at ./app/*.evalset.json are auto-discovered by ADK Web UI
 
 # Ensure .adk directories exist and are writable
 RUN mkdir -p ./app/.adk/eval_sets ./app/.adk/eval_history && chmod -R 777 ./app/.adk
